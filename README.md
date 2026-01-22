@@ -1,5 +1,8 @@
 # Decoder: GPS Navigation for Codebases
 
+[![PyPI version](https://img.shields.io/pypi/v/decoder-graph)](https://pypi.org/project/decoder-graph/)
+[![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+
 Inspired by debuggers, decoder is a static call graph analysis tool for Python. It maps how your code connects, tracing those connections from the routing layer to service layer and across the codebase, without the runtime execution a debugger would require.
 
 Unlike grep, which matches text, decoder traces a symbol's call chain and shows what calls it and what it calls. It also tracks conditionals, loops, and try/except blocks, so you see the full nested context of your methods or functions.
@@ -130,7 +133,7 @@ Then in VS Code:
 
 ## Execution Context Detection
 
-Decoder annotates calls with execution context, helping you understand why a call happens.
+Decoder annotates calls with execution context, mapping the conditions that trigger each call.
 
 | Annotation | Meaning |
 |------------|---------|
