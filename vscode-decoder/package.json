@@ -1,0 +1,163 @@
+{
+  "name": "decoder",
+  "displayName": "Decoder - Call Trace Explorer",
+  "description": "Explore call graphs and trace code paths interactively",
+  "version": "0.1.0",
+  "publisher": "maryamtb",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/maryamtb/decoder"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Visualization",
+    "Other"
+  ],
+  "activationEvents": [
+    "workspaceContains:**/*.py"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "decoder.index",
+        "title": "Decoder: Index Workspace"
+      },
+      {
+        "command": "decoder.showCallers",
+        "title": "Decoder: Show Callers"
+      },
+      {
+        "command": "decoder.showCallees",
+        "title": "Decoder: Show Callees"
+      },
+      {
+        "command": "decoder.trace",
+        "title": "Decoder: Trace",
+        "icon": "$(debug-line-by-line)"
+      },
+      {
+        "command": "decoder.playTrace",
+        "title": "Decoder: Play Trace",
+        "icon": "$(play)"
+      },
+      {
+        "command": "decoder.pauseTrace",
+        "title": "Decoder: Pause Trace",
+        "icon": "$(debug-pause)"
+      },
+      {
+        "command": "decoder.stopTrace",
+        "title": "Decoder: Stop Trace",
+        "icon": "$(debug-stop)"
+      },
+      {
+        "command": "decoder.nextStep",
+        "title": "Decoder: Next Step",
+        "icon": "$(debug-step-over)"
+      },
+      {
+        "command": "decoder.prevStep",
+        "title": "Decoder: Previous Step",
+        "icon": "$(debug-step-back)"
+      }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "decoder",
+          "title": "Decoder",
+          "icon": "$(symbol-method)"
+        }
+      ]
+    },
+    "views": {
+      "decoder": [
+        {
+          "icon": "",
+          "id": "decoderCallTree",
+          "name": "Call Trace"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "decoder.playTrace",
+          "when": "view == decoderCallTree && !decoder.isPlaying",
+          "group": "navigation@1"
+        },
+        {
+          "command": "decoder.pauseTrace",
+          "when": "view == decoderCallTree && decoder.isPlaying",
+          "group": "navigation@1"
+        },
+        {
+          "command": "decoder.stopTrace",
+          "when": "view == decoderCallTree",
+          "group": "navigation@2"
+        },
+        {
+          "command": "decoder.prevStep",
+          "when": "view == decoderCallTree",
+          "group": "navigation@3"
+        },
+        {
+          "command": "decoder.nextStep",
+          "when": "view == decoderCallTree",
+          "group": "navigation@4"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "decoder.trace",
+          "when": "editorLangId == python",
+          "group": "navigation@1"
+        },
+        {
+          "command": "decoder.showCallers",
+          "when": "editorLangId == python",
+          "group": "navigation@2"
+        },
+        {
+          "command": "decoder.showCallees",
+          "when": "editorLangId == python",
+          "group": "navigation@3"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Decoder",
+      "properties": {
+        "decoder.pythonPath": {
+          "type": "string",
+          "default": "python",
+          "description": "Path to Python interpreter with decoder installed"
+        },
+        "decoder.playSpeed": {
+          "type": "number",
+          "default": 1500,
+          "description": "Milliseconds between steps when playing trace"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "pnpm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "packageManager": "pnpm@9.0.0",
+  "devDependencies": {
+    "@types/node": "^20.10.0",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.13.0",
+    "@typescript-eslint/parser": "^6.13.0",
+    "eslint": "^8.54.0",
+    "typescript": "^5.3.0"
+  }
+}
