@@ -1,6 +1,7 @@
 # Decoder: GPS Navigation for Codebases
 
 [![PyPI version](https://img.shields.io/pypi/v/decoder-graph)](https://pypi.org/project/decoder-graph/)
+[![VS Code Marketplace](https://img.shields.io/visual-studio-marketplace/v/maryamtb.decoder)](https://marketplace.visualstudio.com/items?itemName=maryamtb.decoder)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 
 Inspired by debuggers, decoder is a static call graph analysis tool for Python. It maps how your code connects, tracing those connections from the routing layer to service layer and across the codebase, without the runtime execution a debugger would require.
@@ -19,7 +20,7 @@ Interfaces:
 
 ![decoder-mcp](./decoder-mcp.png)
 
-VS Code extension coming soon - preview available with manual install
+![decoder-vsc-demo](./decoder-vsc-demo.gif)
 
 ## MCP Server
 
@@ -82,20 +83,13 @@ Callees:
       └─ Session.add db/session.py:67
 ```
 
-## VS Code Extension (Preview)
+## VS Code Extension
 
 Decoder includes a VS Code extension for interactive call graph exploration.
-The extension is currently in preview and will be published to the VS Code Marketplace soon.
 
-![decoder-vsc-demo](./decoder-vsc-demo.gif)
+### Installation
 
-### Installation (Preview)
-
-Download the `.vsix` from [Releases](https://github.com/maryamtb/decoder/releases), then:
-
-```bash
-code --install-extension decoder.vsix
-```
+[Install in VS Code](vscode:extension/maryamtb.decoder) | [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=maryamtb.decoder)
 
 
 ### Usage

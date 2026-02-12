@@ -152,6 +152,9 @@
     "lint": "eslint src --ext ts"
   },
   "packageManager": "pnpm@9.0.0",
+  "vsce": {
+    "dependencies": false
+  },
   "devDependencies": {
     "@types/node": "^20.10.0",
     "@types/vscode": "^1.85.0",
